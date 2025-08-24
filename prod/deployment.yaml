@@ -2,16 +2,16 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: nginx-sample
-  namespace: tomcat-dev
+  namespace: tomcat-prod
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: nginx-sample-dev
+      app: nginx-sample-prod
   template:
     metadata:
       labels:
-        app: nginx-sample-dev
+        app: nginx-sample-prod
     spec:
       containers:
         - name: nginx

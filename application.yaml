@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: tomcat-app
+  name: tomcat-app-dev
   namespace: argocd
 spec:
   project: tomcat-dev
@@ -11,7 +11,7 @@ spec:
     path: dev
   destination:
     server: https://kubernetes.default.svc
-    namespace: tomcat
+    namespace: tomcat-dev
   syncPolicy:
     automated:
       prune: true        # Delete resources no longer in Git
@@ -24,14 +24,14 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: tomcat-app
+  name: tomcat-app-prod
   namespace: argocd
 spec:
   project: tomcat-prod
   source:
     repoURL: https://github.com/sadityalal/argocd.git
     targetRevision: main
-    path: dev
+    path: prod
   destination:
     server: https://kubernetes.default.svc
     namespace: tomcat-prod
