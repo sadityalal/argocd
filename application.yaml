@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: tomcat-app
+  name: tomcat-app-dev
   namespace: argocd
 spec:
   project: tomcat-dev
@@ -24,7 +24,7 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: tomcat-app
+  name: tomcat-app-prod
   namespace: argocd
 spec:
   project: tomcat-prod
