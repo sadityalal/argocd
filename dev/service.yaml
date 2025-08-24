@@ -6,9 +6,9 @@ metadata:
 spec:
   type: NodePort
   selector:
-    app: nginx-sample
+    app: nginx-sample-dev
   ports:
     - port: 80           # Cluster port
       targetPort: 80     # Container port
-      nodePort: 30081    # NodePort for kind
+      nodePort: 30080   # NodePort for kind
 
