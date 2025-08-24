@@ -10,5 +10,5 @@ spec:
   ports:
     - port: 80           # Cluster port
       targetPort: 80     # Container port
-      nodePort: 30443    # NodePort for kind
+      nodePort: 30099    # NodePort for kind
 
