@@ -1,17 +1,40 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: example-app
+  name: tomcat-app
   namespace: argocd
 spec:
-  project: default
+  project: tomcat-dev
   source:
     repoURL: https://github.com/sadityalal/argocd.git
-    targetRevision: HEAD
+    targetRevision: develop
     path: dev
   destination:
     server: https://kubernetes.default.svc
-    namespace: myapp
+    namespace: tomcat
+  syncPolicy:
+    automated:
+      prune: true        # Delete resources no longer in Git
+      selfHeal: true     # Automatically correct drift
+    syncOptions:
+      - CreateNamespace=true
+
+--- 
+
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: tomcat-app
+  namespace: argocd
+spec:
+  project: tomcat
+  source:
+    repoURL: https://github.com/sadityalal/argocd.git
+    targetRevision: main
+    path: dev
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: tomcat-prod
   syncPolicy:
     automated:
       prune: true        # Delete resources no longer in Git
