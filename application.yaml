@@ -27,7 +27,7 @@ metadata:
   name: tomcat-app
   namespace: argocd
 spec:
-  project: tomcat
+  project: tomcat-prod
   source:
     repoURL: https://github.com/sadityalal/argocd.git
     targetRevision: main
