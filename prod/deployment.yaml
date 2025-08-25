@@ -22,7 +22,7 @@ spec:
         tier: prod
     spec:
       containers:
-        - name: nginx
+        - name: myjava-app-prod
           image: saurabhred/myapp:1
           imagePullPolicy: Always
           ports:
