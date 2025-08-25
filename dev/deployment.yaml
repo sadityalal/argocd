@@ -1,21 +1,47 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx-sample
+  name: myapp-tomcat-dev
   namespace: tomcat-dev
+  labels:
+    app: myapp-java
+    plat: tomcat
+    tier: dev
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: nginx-sample-dev
+      app: myapp-java
+      plat: tomcat
+      tier: dev
   template:
     metadata:
       labels:
-        app: nginx-sample-dev
+        app: myapp-java
+        plat: tomcat
+        tier: dev
     spec:
       containers:
         - name: nginx
-          image: nginx:stable
+          image: saurabhred/myapp:VERSION
           ports:
             - containerPort: 80
-
+          resources:
+            requests:
+              cpu: 100m
+              memory: 250Mi
+            limits:
+              cpu: 200m
+              memory: 1Gi
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 8080
+            initialDelaySeconds: 180
+            periodSeconds: 30
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 8080
+            initialDelaySeconds: 180
+            periodSeconds: 30
