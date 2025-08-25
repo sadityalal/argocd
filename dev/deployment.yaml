@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
         - name: nginx
-          image: saurabhred/myapp:VERSION
+          image: saurabhred/myapp:1
           ports:
             - containerPort: 80
           resources:
