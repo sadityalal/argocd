@@ -24,6 +24,7 @@ spec:
       containers:
         - name: nginx
           image: saurabhred/myapp:1
+          imagePullPolicy: Always
           ports:
             - containerPort: 80
           resources:
