@@ -22,7 +22,7 @@ spec:
         tier: dev
     spec:
       containers:
-        - name: nginx
+        - name: myjava-app-dev
           image: saurabhred/myapp:1
           imagePullPolicy: Always
           ports:
